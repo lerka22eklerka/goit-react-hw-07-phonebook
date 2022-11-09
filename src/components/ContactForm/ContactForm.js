@@ -8,7 +8,8 @@ import {
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItems } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
+
 
 export const ContactForm = () => {
   const [userName, setUsername] = useState('');
@@ -37,6 +38,7 @@ export const ContactForm = () => {
     }
 
     dispatch(addContact({ userName, number }));
+    console.log(userName);
     setUsername('');
     setNumber('');
   };

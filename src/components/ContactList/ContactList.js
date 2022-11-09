@@ -1,7 +1,8 @@
 import { ContactPerson } from "components/ContactPerson/ContactPerson";
 import { List } from './ContactList.styled';
 import { useSelector } from 'react-redux';
-import { getFilter, getItems } from 'redux/selectors';
+import { getFilter, getItems} from 'redux/selectors';
+import { Loader } from "components/Loader/Loader";
 
 export const ContactList = () => {
   const contacts = useSelector(getItems);
@@ -16,9 +17,15 @@ export const ContactList = () => {
 
     return (
       <List>
-        {filterContacts.map(contact => (
-          <ContactPerson key={contact.id} id={contact.id } contact={contact.name} />
-        ))}
+        <Loader/>
+        {contacts &&
+          filterContacts.map(contact => (
+            <ContactPerson
+              key={contact.id}
+              id={contact.id}
+              contact={contact.name}
+            />
+          ))}
       </List>
     );
 }
