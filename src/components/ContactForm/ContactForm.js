@@ -28,10 +28,10 @@ export const ContactForm = () => {
   // console.log(contacts);
   const handleSubmit = event => {
     event.preventDefault();
-
+console.log(userName);
     if (
       contacts.some(contact => {
-        return contact.name.userName.toLowerCase() === userName.toLowerCase();
+        return contact.name.toLowerCase() === userName.toLowerCase();
       })
     ) {
       return alert(userName + ' is already in contacts!');
